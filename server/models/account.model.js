@@ -24,7 +24,7 @@ const AccountSchema = new mongoose.Schema({
     },
     state: {
         type: String,
-        enum: ["FL", "NY", "AL", "CA", "TX", "PA", "SC", "NC", "Select a state"],
+        enum: ["FL", "NY", "AL", "CA", "TX", "Select a state"],
         default: "Select a state",
     },
     password: {

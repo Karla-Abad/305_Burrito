@@ -1,23 +1,21 @@
-import logo from './logo.svg';
+import React from 'react';
+import {Router} from "@reach/router"
 import './App.css';
+import AccountForm from './components/AccountForm';
+import Home from './components/Home';
+import LoginForm from './components/LoginForm';
+import UpdateAccount from './components/UpdateAccount';
 
-function App() {
+
+const App=() => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <Router>
+       <AccountForm path="/register" default/>
+       <Home path="/home" />
+       <LoginForm path="/login" />
+       <UpdateAccount path="/accounts/:id" />
+     </Router>
     </div>
   );
 }
