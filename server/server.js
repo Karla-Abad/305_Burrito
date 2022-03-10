@@ -9,4 +9,5 @@ app.use(express.urlencoded({extended:true}));
 
 require("./config/mongoose.config")
 require("./routes/account.routes")(app);
+require("./routes/order.routes")(app);
 app.listen(port, ()=> {console.log(`Express server running on port ${port}`)});
