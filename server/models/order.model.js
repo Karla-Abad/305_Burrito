@@ -24,6 +24,24 @@ const OrderSchema = new mongoose.Schema({
     toppingThree: {
         type: String
     },
+    toppingFour: {
+        type: String
+    },
+    toppingFive: {
+        type: String
+    },
+    toppingSix: {
+        type: String
+    },
+    toppingSeven: {
+        type: String
+    },
+    toppingEight: {
+        type: String
+    },
+    toppingNine: {
+        type: String
+    },
     },
     { timestamps: true });
 

@@ -15,11 +15,11 @@ const Home = () => {
             </div>
             <div>
                 <p>Save time and order your favorite option based on past orders.</p>
-                <button>RE-ORDER MY FAV</button>
+                <button onClick={(e)=> navigate("/build_fav")}>RE-ORDER MY FAV</button>
             </div>
             <div>
                 <p>Do you feel adventourous today! Get your Burrito from our Favorite Options.</p>
-                <button>SURPRISE ME</button>
+                <button onClick={(e)=> navigate("/build_burrito")}>SURPRISE ME</button>
             </div>
         </div>
     )

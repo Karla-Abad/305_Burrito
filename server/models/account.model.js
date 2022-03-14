@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const bcrypt = require("bcrypt");
+
 const AccountSchema = new mongoose.Schema({
     firstName: { 
         type: String,
@@ -34,6 +36,32 @@ const AccountSchema = new mongoose.Schema({
     },
     },
     { timestamps: true });
+
+    //Virtual field - information we dont need to store in the db.
+    AccountSchema.virtual("confirmPassword")
+    .get(()=>this._confirmPassword)
+    .set((value)=> this._confirmPassword = value)
+
+    //Mongoose middleware
+
+    AccountSchema.pre("validate", function(next){
+        if(this.password !== this.confirmPassword){
+            this.invalidate("confirmPassword", "Passwords must match!!")
+            console.log("Passwords don't match.")
+        }
+        next()
+    })
+
+    AccountSchema.pre("save", function(next){
+        console.log("in pre save");
+        //bcrypt is a library that will help us with the hashing of the user information.
+        // salting rounds refers to how many times will the password be shuffled. In this case, 10 times.
+        bcrypt.hash(this.password, 10)
+            .then((hashedPassword)=> {
+                this.password = hashedPassword;
+                next()
+            })
+    } )
 
 module.exports = mongoose.model('Account', AccountSchema);
 

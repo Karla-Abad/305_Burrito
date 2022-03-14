@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors")
 const app = express();
@@ -10,4 +11,4 @@ app.use(express.urlencoded({extended:true}));
 require("./config/mongoose.config")
 require("./routes/account.routes")(app);
 require("./routes/order.routes")(app);
-app.listen(port, ()=> {console.log(`Express server running on port ${port}`)});
+app.listen(process.env.MY_PORT, ()=> {console.log(`Express server running on port ${process.env.MY_PORT}`)});

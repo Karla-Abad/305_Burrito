@@ -5,11 +5,12 @@ import AccountForm from './components/AccountForm';
 import Home from './components/Home';
 import LoginForm from './components/LoginForm';
 import UpdateAccount from './components/UpdateAccount';
-import OrderForm from './components/OrderForm';
 import OrderList from './components/OrderList';
 import PurchaseConfirmation from './components/PurchaseConfirmation';
 import axios from 'axios';
 import { navigate, Link } from "@reach/router";
+import New from './components/New';
+import Fav from './components/Fav';
 
 
 const App=() => {
@@ -25,13 +26,14 @@ const App=() => {
     .post("http://localhost:8000/api/build_burrito", order)
     .then(res => {
         setOrders([...orders, res.data])
-        navigate("/your_order/:id")
+        navigate("/your_order/"+res.data._id)
     })
     .catch(err => {
         console.log(err.response.data.err.errors);
         setErrors(err.response.data.err.errors);
     })
 }
+
 
 
   return (
@@ -41,7 +43,8 @@ const App=() => {
        <Home path="/home" default/>
        <LoginForm path="/login" />
        <UpdateAccount path="/accounts/:id" />
-       <OrderForm path="/build_burrito" onSubmitProp ={createOrder} errors={errors} setErrors={setErrors} />
+       <New path="/build_burrito"/>
+       <Fav path="/build_fav"/>
        <OrderList path="/your_order/:id" orders={orders} setOrders={setOrders}  removeFromDom={removeFromDom} />
        <PurchaseConfirmation path="/purchase_confirmation" />
      </Router>

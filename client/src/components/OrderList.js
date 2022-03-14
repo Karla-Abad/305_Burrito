@@ -34,16 +34,22 @@ const OrderList =(props)=> {
             <p>METHOD: {order.method}</p>
             <p>Burrito Type: {order.burritoType}</p>
             <p>Qty: {order.qty}</p>
-            <p>Toppings:</p>
-            <ol>
-                <li>{order.toppingOne}</li>
-                <li>{order.toppingTwo}</li>
-                <li>{order.toppingThree}</li>
-            </ol>
+            <span>Toppings:</span>
+                {order.toppingOne!=="" &&<span>{order.toppingOne}</span>},  
+                {order.toppingTwo!=="" &&<span>{order.toppingTwo}</span>},  
+                {order.toppingThree!=="" &&<span>{order.toppingThree}</span>}, 
+                {order.toppingFour!=="" &&<span>{order.toppingFour}</span>}, 
+                {order.toppingFive!=="" &&<span>{order.toppingFive}</span>}, 
+                {order.toppingSix!=="" &&<span>{order.toppingSix}</span>}, 
+                {order.toppingSeven!=="" &&<span>{order.toppingSeven}</span>}, 
+                {order.toppingEight!=="" &&<span>{order.toppingEight}</span>}, 
+                {order.toppingNine!=="" &&<span>{order.toppingNine}</span>}
+                
+            
             <p>PRICE:</p>
             <p>DELIVERY FEE:</p>
             <p>TAX:</p>
-           
+            <hr/>
             <p>TOTAL:</p>
             <div>
                 <button onClick={(e)=> {handleDelete(order._id)}}>START OVER</button>
