@@ -82,16 +82,21 @@ logout: (req, res)=> {
   })
 },
 
-getOneAccount: (req, res) => {
-  Account.findOne({_id: req.params.id})
-    .then((oneAccount)=> {
-      console.log(oneAccount);
-      res.json(oneAccount);
+getLoggedInAccount: (req, res) => {
+  Account.findOne({_id: req.jwtpayload.id})
+    .then(account => res.json(account))
+    .catch(err => res.json(err))
+},
+
+findAllAccounts: (req, res)=> {
+  Account.find()
+    .then((allAccounts) => {
+      res.json(allAccounts);
     })
-    .catch((err)=> {
-      console.log(err);
-      res.status(400).json(err);;
-    });
+    .catch((err)=>{
+      console.log("Find All Accounts failed");
+      res.json({messagee: "Something went wrong in findAll", error: err})
+    })
 }
 
 }

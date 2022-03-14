@@ -42,6 +42,10 @@ const OrderSchema = new mongoose.Schema({
     toppingNine: {
         type: String
     },
+    createdBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Account"
+    }
     },
     { timestamps: true });
 
