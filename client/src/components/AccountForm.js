@@ -1,8 +1,8 @@
 import axios from "axios";
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Link, navigate } from "@reach/router";
 
-const AccountForm = () => {
+const AccountForm = (props) => {
 
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -14,11 +14,12 @@ const AccountForm = () => {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [accounts, setAccounts] = useState([]);
     const [errors, setErrors] = useState({});
+    const [ confirmReg, setConfirmReg]= useState("");
 
     const handleSubmit = (e) => {
         e.preventDefault();
         axios
-        .post("http://localhost:8000/api/register", {
+        .post("http://localhost:8000/api/accounts/register", {
             firstName,
             lastName,
             email,
@@ -27,14 +28,26 @@ const AccountForm = () => {
             state,
             password,
             confirmPassword
+        }, {
+            withCredentials:true
         })
         .then(res => {
+            console.log(res.data);
+            setFirstName("");
+            setLastName("");
+            setEmail("");
+            setAddress("");
+            setCity("");
+            setState("");
+            setPassword("");
+            setConfirmPassword("");
             setAccounts([...accounts, res.data])
-            navigate("/home");
+            setConfirmReg("Thank you for Registering, you can now log in!")
+            setErrors({});
         })
         .catch(err => {
-            console.log(err.response.data.err.errors);
-            setErrors(err.response.data.err.errors);
+            console.log(err.response.data.errors);
+            setErrors(err.response.data.errors);
         })
     }
 
@@ -83,9 +96,10 @@ const AccountForm = () => {
                 <label>Confirm Password:</label>
                 <input type="password" value={confirmPassword} onChange={(e)=> setConfirmPassword(e.target.value)} />
                 <div>
-                    <button type="submit">Sign Up</button>
+                    <button>Sign Up</button>
                 </div>
             </form>
+            {confirmReg ? <p>{confirmReg}</p>: null}
         </div>
     )
 }

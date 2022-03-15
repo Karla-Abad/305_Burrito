@@ -11,6 +11,7 @@ import axios from 'axios';
 import { navigate, Link } from "@reach/router";
 import New from './components/New';
 import Fav from './components/Fav';
+import Surprise from './components/Surprise';
 
 
 const App=() => {
@@ -39,12 +40,13 @@ const App=() => {
   return (
     <div className="App">
      <Router>
-       <AccountForm path="/register"/>
-       <Home path="/home" default/>
+       <AccountForm path="/accounts/register" default/>
+       <Home path="/home" />
        <LoginForm path="/login" />
-       <UpdateAccount path="/accounts/:id" />
+       <UpdateAccount path="/orders/:firstName" />
        <New path="/build_burrito"/>
        <Fav path="/build_fav"/>
+       <Surprise path="/build_surprise" />
        <OrderList path="/your_order/:id" orders={orders} setOrders={setOrders}  removeFromDom={removeFromDom} />
        <PurchaseConfirmation path="/purchase_confirmation" />
      </Router>

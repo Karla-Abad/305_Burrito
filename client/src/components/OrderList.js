@@ -34,18 +34,19 @@ const OrderList =(props)=> {
             <p>METHOD: {order.method}</p>
             <p>Burrito Type: {order.burritoType}</p>
             <p>Qty: {order.qty}</p>
-            <span>Toppings:</span>
-                {order.toppingOne!=="" &&<span>{order.toppingOne}</span>},  
-                {order.toppingTwo!=="" &&<span>{order.toppingTwo}</span>},  
-                {order.toppingThree!=="" &&<span>{order.toppingThree}</span>}, 
-                {order.toppingFour!=="" &&<span>{order.toppingFour}</span>}, 
-                {order.toppingFive!=="" &&<span>{order.toppingFive}</span>}, 
-                {order.toppingSix!=="" &&<span>{order.toppingSix}</span>}, 
-                {order.toppingSeven!=="" &&<span>{order.toppingSeven}</span>}, 
-                {order.toppingEight!=="" &&<span>{order.toppingEight}</span>}, 
-                {order.toppingNine!=="" &&<span>{order.toppingNine}</span>}
-                
-            
+            <span>Toppings: </span>
+                {order.steak===true &&<span>Steak, </span>}  
+                {order.chicken===true &&<span>Chicken, </span>}  
+                {order.whiteRice===true &&<span>White Rice, </span>} 
+                {order.brownRice===true &&<span>Brown Rice, </span>}
+                {order.blackBeans===true &&<span>Black Beans, </span>} 
+                {order.pintoBeans===true &&<span>Pinto Beans, </span>} 
+                {order.lettuce===true &&<span>Lettuce, </span>} 
+                {order.corn===true &&<span>Corn, </span>} 
+                {order.cheese===true &&<span>Cheese, </span>}
+                {order.picoDeGallo===true &&<span>Pico de Gallo, </span>}
+                {order.onions===true &&<span>Onions, </span>}
+                {order.guacamole===true &&<span>Guacamole, </span>}            
             <p>PRICE:</p>
             <p>DELIVERY FEE:</p>
             <p>TAX:</p>

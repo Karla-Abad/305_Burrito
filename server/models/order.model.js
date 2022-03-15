@@ -15,32 +15,53 @@ const OrderSchema = new mongoose.Schema({
         min: 1,
         max: 3
     },
-    toppingOne: {
-        type: String
+    steak: {
+        type: Boolean,
+        default: false
     },
-    toppingTwo: {
-        type: String
+    chicken: {
+        type: Boolean,
+        default: false
     },
-    toppingThree: {
-        type: String
+    whiteRice: {
+        type: Boolean,
+        default: false
     },
-    toppingFour: {
-        type: String
+    brownRice: {
+        type: Boolean,
+        default: false
     },
-    toppingFive: {
-        type: String
+    blackBeans: {
+        type: Boolean,
+        default: false
     },
-    toppingSix: {
-        type: String
+    pintoBeans: {
+        type: Boolean,
+        default: false
     },
-    toppingSeven: {
-        type: String
+    lettuce: {
+        type: Boolean,
+        default: false
     },
-    toppingEight: {
-        type: String
+    corn: {
+        type: Boolean,
+        default: false
     },
-    toppingNine: {
-        type: String
+    cheese: {
+        type: Boolean,
+        default: false
+    },
+    picoDeGallo: {
+        type: Boolean,
+        default: false
+    },
+    onions: {
+        type: Boolean,
+        default: false
+    },
+    guacamole: {
+        type: Boolean,
+        default: false
     },
     createdBy: {
         type: mongoose.Schema.Types.ObjectId,

@@ -6,21 +6,38 @@ import { navigate } from "@reach/router";
 const New = () => {
     const [orders,setOrders] = useState([]);
     const[errors, setErrors] = useState({});
+    const [order, setOrder] = useState({
+                method:"Pickup",
+                burritoType : "Bowl",
+                qty : "1",
+                steak: false,
+                chicken: false,
+                whiteRice: false,
+                brownRice: false,
+                blackBeans: false,
+                pintoBeans: false,
+                lettuce: false,
+                corn: false,
+                cheese: false,
+                picoDeGallo: false,
+                onions: false, 
+                guacamole:false
+                
+    });
   
-    // const removeFromDom = orderId => {
-    //   setOrders(orders.filter(order => order._id !== orderId))
-    // }
   
     const createOrder = (order) => {
       axios
-      .post("http://localhost:8000/api/build_burrito", order)
+      .post("http://localhost:8000/api/build_burrito", order,
+      {withCredentials:true}
+      )
       .then(res => {
           setOrders([...orders, res.data])
           navigate("/your_order/"+res.data._id)
       })
       .catch(err => {
-          console.log(err.response.data.err.errors);
-          setErrors(err.response.data.err.errors);
+          console.log(err.response.data.errors);
+          setErrors(err.response.data.errors);
       })
   }
     return(
@@ -28,28 +45,9 @@ const New = () => {
             <OrderForm 
             onSubmitProp = {createOrder} 
             errors={errors} 
+            order = {order}
+            setOrder = {setOrder}
             setErrors={setErrors}
-            initialMethod="Pickup"
-            initialBurritoType = "Bowl"
-            initialQty = "1"
-            initialToppingOne = ""
-            initialToppingTwo = ""
-            initialToppingThree = ""
-            initialToppingFour = ""
-            initialToppingFive = ""
-            initialToppingSix = ""
-            initialToppingSeven = ""
-            initialToppingEight = ""
-            initialToppingNine = ""
-            initialCheckedToppingOne = {false}
-            initialCheckedToppingTwo = {false}
-            initialCheckedToppingThree = {false}
-            initialCheckedToppingFour = {false}
-            initialCheckedToppingFive = {false}
-            initialCheckedToppingSix = {false}
-            initialCheckedToppingSeven = {false}
-            initialCheckedToppingEight = {false}
-            initialCheckedToppingNine = {false}
             />   
         </div>
     )

@@ -54,6 +54,7 @@ module.exports.findAllOrders = (req, res) => {
       Account.findOne({firstName: req.params.firstName})
         .then((accountNotLoggedIn)=>{
           Order.find({createdBy: accountNotLoggedIn._id})
+            .populate("createdBy", "firstName")
             .then((allOrdersfromAccount)=> {
               console.log(allOrdersfromAccount);
               res.json(allOrdersfromAccount);
@@ -69,6 +70,7 @@ module.exports.findAllOrders = (req, res) => {
         })
     } else {
       Order.find({createdBy: req.jwtpayload.id})
+        .populate("createdBy", "firstName")
         .then((allOrdersFromLoggedInAccount)=>{
           console.log(allOrdersFromLoggedInAccount);
           res.json(allOrdersFromLoggedInAccount);

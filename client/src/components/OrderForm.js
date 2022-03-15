@@ -4,114 +4,26 @@ import Nav from "./Nav"
 import axios from "axios"
 
 const OrderForm = (props) => {
-    const {onSubmitProp, initialMethod, initialBurritoType, initialQty, initialToppingOne, initialToppingTwo, initialToppingThree, initialToppingFour, initialToppingFive, initialToppingSix, initialToppingSeven, initialToppingEight, initialToppingNine, initialCheckedToppingOne, initialCheckedToppingTwo, initialCheckedToppingThree, initialCheckedToppingFour, initialCheckedToppingFive, initialCheckedToppingSix, initialCheckedToppingSeven, initialCheckedToppingEight, initialCheckedToppingNine } = props;
-    const[method, setMethod]= useState(initialMethod);
-    const[burritoType, setBurritoType] = useState(initialBurritoType);
-    const[qty, setQty] = useState(initialQty);
-    const[checkedToppingOne, setCheckedToppingOne]=useState(initialCheckedToppingOne);
-    const[toppingOne, setToppingOne] = useState(initialToppingOne);
-    const[checkedToppingTwo, setCheckedToppingTwo]=useState(initialCheckedToppingTwo);
-    const[toppingTwo, setToppingTwo] = useState(initialToppingTwo);
-    const[checkedToppingThree, setCheckedToppingThree]= useState(initialCheckedToppingThree)
-    const[toppingThree, setToppingThree] = useState(initialToppingThree);
-    const[checkedToppingFour, setCheckedToppingFour]= useState(initialCheckedToppingFour)
-    const[toppingFour, setToppingFour] = useState(initialToppingFour);
-    const[checkedToppingFive, setCheckedToppingFive]= useState(initialCheckedToppingFive)
-    const[toppingFive, setToppingFive] = useState(initialToppingFive);
-    const[checkedToppingSix, setCheckedToppingSix]= useState(initialCheckedToppingSix)
-    const[toppingSix, setToppingSix] = useState(initialToppingSix);
-    const[checkedToppingSeven, setCheckedToppingSeven]= useState(initialCheckedToppingSeven)
-    const[toppingSeven, setToppingSeven] = useState(initialToppingSeven);
-    const[checkedToppingEight, setCheckedToppingEight]= useState(initialCheckedToppingEight)
-    const[toppingEight, setToppingEight] = useState(initialToppingEight);
-    const[checkedToppingNine, setCheckedToppingNine]= useState(initialCheckedToppingNine)
-    const[toppingNine, setToppingNine] = useState(initialToppingNine);
-    
-
-    const handleToggleToppingOne = () => {
-        setCheckedToppingOne(!checkedToppingOne);
-        if(checkedToppingOne === true){
-            setToppingOne("");
-        }else if(checkedToppingOne===false){
-            setToppingOne("Steak")
-        }
+    const {order, setOrder, onSubmitProp} = props;    
+    const handleInputChange = (e)=>{
+        console.log("name: "+ e.target.name);
+        console.log("value: "+ e.target.value);
+        let tempOrder = {...order};
+        tempOrder[e.target.name]= e.target.value
+        setOrder(tempOrder)
     }
 
-    const handleToggleToppingTwo = () => {
-        setCheckedToppingTwo(!checkedToppingTwo);
-        if(checkedToppingTwo === true){
-            setToppingTwo("");
-        }else if(checkedToppingTwo===false){
-            setToppingTwo("Chicken")
-        }
-    }
-
-    const handleToggleToppingThree = () => {
-        setCheckedToppingThree(!checkedToppingThree);
-        if(checkedToppingThree === true){
-            setToppingThree("");
-        }else if(checkedToppingThree===false){
-            setToppingThree("White Rice")
-        }
-    }
-
-    const handleToggleToppingFour = () => {
-        setCheckedToppingFour(!checkedToppingFour);
-        if(checkedToppingFour === true){
-            setToppingFour("");
-        }else if(checkedToppingFour===false){
-            setToppingFour("Brown Rice")
-        }
-    }
-
-    const handleToggleToppingFive = () => {
-        setCheckedToppingFive(!checkedToppingFive);
-        if(checkedToppingFive === true){
-            setToppingFive("");
-        }else if(checkedToppingFive===false){
-            setToppingFive("Black Beans")
-        }
-    }
-
-    const handleToggleToppingSix = () => {
-        setCheckedToppingSix(!checkedToppingSix);
-        if(checkedToppingSix === true){
-            setToppingSix("");
-        }else if(checkedToppingSix===false){
-            setToppingSix("Pinto Beans")
-        }
-    }
-
-    const handleToggleToppingSeven = () => {
-        setCheckedToppingSeven(!checkedToppingSeven);
-        if(checkedToppingSeven === true){
-            setToppingSeven("");
-        }else if(checkedToppingSeven===false){
-            setToppingSeven("Corn")
-        }
-    }
-
-    const handleToggleToppingEight = () => {
-        setCheckedToppingEight(!checkedToppingEight);
-        if(checkedToppingEight === true){
-            setToppingEight("");
-        }else if(checkedToppingEight===false){
-            setToppingEight("Pico de gallo")
-        }
-    }
-
-    const handleToggleToppingNine = () => {
-        setCheckedToppingNine(!checkedToppingNine);
-        if(checkedToppingNine === true){
-            setToppingNine("");
-        }else if(checkedToppingNine===false){
-            setToppingNine("Cheese")
-        }
+    const handleCheckedChange = (e) => {
+        console.log("name: "+ e.target.name);
+        console.log("checked: "+ e.target.checked);
+        let tempOrder = {...order};
+        tempOrder[e.target.name]= e.target.checked;
+        setOrder(tempOrder)
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        onSubmitProp({method, burritoType, qty, toppingOne, toppingTwo, toppingThree, toppingFour, toppingFive, toppingSix, toppingSeven, toppingEight, toppingNine})
+        onSubmitProp(order);
     }
 
     
@@ -122,31 +34,34 @@ const OrderForm = (props) => {
             <div>
                 <form onSubmit={handleSubmit}> 
                     <label>METHOD:</label>
-                    <select value={method} onChange={(e)=> setMethod(e.target.value)}>
+                    <select name="method" value={order.method} onChange={(e)=> handleInputChange(e)}>
                         <option>Pickup</option>
                         <option>Delivery</option>
                     </select>
                     <label>BURRITO TYPE:</label>
-                    <select value={burritoType} onChange={(e)=> setBurritoType(e.target.value)}>
+                    <select name="burritoType" value={order.burritoType} onChange={(e)=> handleInputChange(e)}>
                         <option>Bowl</option>
                         <option>Burrito</option>
                     </select>
                     <label>QTY:</label>
-                    <select value={qty} onChange={(e)=> setQty(e.target.value)}>
+                    <select name="qty" value={order.qty} onChange={(e)=> handleInputChange(e)}>
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
                     </select>
                     <label>TOPPINGS:</label>
-                    <input type="checkbox" checked={checkedToppingOne}  onChange={handleToggleToppingOne} />Steak
-                    <input type="checkbox" checked={checkedToppingTwo} onChange={handleToggleToppingTwo} />Chicken
-                    <input type="checkbox" checked={checkedToppingThree} onChange={handleToggleToppingThree}/>White Rice
-                    <input type="checkbox" checked={checkedToppingFour} onChange={handleToggleToppingFour}/>Brown Rice
-                    <input type="checkbox" checked={checkedToppingFive} onChange={handleToggleToppingFive}/>Black Beans
-                    <input type="checkbox" checked={checkedToppingSix} onChange={handleToggleToppingSix}/>Pinto Beans
-                    <input type="checkbox" checked={checkedToppingSeven} onChange={handleToggleToppingSeven}/>Corn
-                    <input type="checkbox" checked={checkedToppingEight} onChange={handleToggleToppingEight}/>Pico de Gallo
-                    <input type="checkbox" checked={checkedToppingNine} onChange={handleToggleToppingNine}/>Cheese
+                    <input name="steak" type="checkbox" checked={order.steak}  onChange={handleCheckedChange} />Steak
+                    <input name="chicken" type="checkbox" checked={order.chicken} onChange={handleCheckedChange} />Chicken
+                    <input name="whiteRice" type="checkbox" checked={order.whiteRice} onChange={handleCheckedChange}/>White Rice
+                    <input name="brownRice" type="checkbox" checked={order.brownRice} onChange={handleCheckedChange}/>Brown Rice
+                    <input name="blackBeans" type="checkbox" checked={order.blackBeans} onChange={handleCheckedChange}/>Black Beans
+                    <input name="pintoBeans" type="checkbox" checked={order.pintoBeans} onChange={handleCheckedChange}/>Pinto Beans
+                    <input name="lettuce" type="checkbox" checked={order.lettuce} onChange={handleCheckedChange}/>Lettuce
+                    <input name="corn" type="checkbox" checked={order.corn} onChange={handleCheckedChange}/>Corn
+                    <input name="cheese" type="checkbox" checked={order.cheese} onChange={handleCheckedChange}/>Cheese
+                    <input name="picoDeGallo" type="checkbox" checked={order.picoDeGallo} onChange={handleCheckedChange}/>Pico de Gallo
+                    <input name="onions" type="checkbox" checked={order.onions} onChange={handleCheckedChange}/>Onions
+                    <input name="guacamole" type="checkbox" checked={order.guacamole} onChange={handleCheckedChange}/>Guacamole
                     <div>
                         <button type="submit">ADD TO ORDER</button>
                     </div>

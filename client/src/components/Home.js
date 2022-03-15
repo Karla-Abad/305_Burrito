@@ -19,7 +19,7 @@ const Home = () => {
             </div>
             <div>
                 <p>Do you feel adventourous today! Get your Burrito from our Favorite Options.</p>
-                <button onClick={(e)=> navigate("/build_burrito")}>SURPRISE ME</button>
+                <button onClick={(e)=> navigate("/build_surprise")}>SURPRISE ME</button>
             </div>
         </div>
     )
