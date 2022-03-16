@@ -53,35 +53,37 @@ const AccountForm = (props) => {
 
     return(
         <div>
-            <div>
-                <h1>305 BURRITO</h1>
+            <div className="flex">
+                <h1 className="title">305 BURRITO</h1>
                 <Link to="/login">Already Have an Account? Login</Link>
             </div>
+            <h2>Sign Up!</h2>
+            <h2> Create your Account.</h2>
             <form onSubmit={handleSubmit}>
-                <div>
+                <div className="flexContent">
                     <div>
-                        <label>First Name:</label>
-                        <input type="text" value={firstName} onChange={(e)=> setFirstName(e.target.value)} />
+                        <label className='form-label'>First Name:</label>
+                        <input className='form-control' type="text" value={firstName} onChange={(e)=> setFirstName(e.target.value)} />
                     </div>
                     {errors.firstName && <p>{errors.firstName.message}</p>}
                     <div>
-                        <label>Last Name:</label>
-                        <input type="text" value={lastName} onChange={(e)=> setLastName(e.target.value)} />
+                        <label className='form-label'>Last Name:</label>
+                        <input className='form-control' type="text" value={lastName} onChange={(e)=> setLastName(e.target.value)} />
                     </div>
                     {errors.lastName && <p>{errors.lastName.message}</p>}
                 </div>
-                <label>Email:</label>
-                <input type="text" value={email} onChange={(e)=> setEmail(e.target.value)} />
+                <label className='form-label'>Email:</label>
+                <input className='form-control' type="text" value={email} onChange={(e)=> setEmail(e.target.value)} />
                 {errors.email && <p>{errors.email.message}</p>}
-                <label>Address:</label>
-                <input type="text" value={address} onChange={(e)=> setAddress(e.target.value)} />
+                <label className='form-label'>Address:</label>
+                <input className='form-control' type="text" value={address} onChange={(e)=> setAddress(e.target.value)} />
                 {errors.address && <p>{errors.address.message}</p>}
                 <div>
-                    <label>City:</label>
-                    <input type="text" value={city} onChange={(e)=> setCity(e.target.value)} />
+                    <label className='form-label'>City:</label>
+                    <input className='form-control' type="text" value={city} onChange={(e)=> setCity(e.target.value)} />
                     {errors.city && <p>{errors.city.message}</p>}
                     <label>State:</label>
-                    <select value={state} onChange={(e)=> setState(e.target.value)}>
+                    <select className="form-select form-select-sm" value={state} onChange={(e)=> setState(e.target.value)}>
                         <option>Select a state</option>
                         <option>FL</option>
                         <option>NY</option>
@@ -90,13 +92,13 @@ const AccountForm = (props) => {
                         <option>TX</option>
                     </select>
                 </div>
-                <label>Password:</label>
-                <input type="password" value={password} onChange={(e)=> setPassword(e.target.value)} />
+                <label className='form-label'>Password:</label>
+                <input className='form-control' type="password" value={password} onChange={(e)=> setPassword(e.target.value)} />
                 {errors.password && <p>{errors.password.message}</p>}
-                <label>Confirm Password:</label>
-                <input type="password" value={confirmPassword} onChange={(e)=> setConfirmPassword(e.target.value)} />
+                <label className='form-label'>Confirm Password:</label>
+                <input className='form-control' type="password" value={confirmPassword} onChange={(e)=> setConfirmPassword(e.target.value)} />
                 <div>
-                    <button>Sign Up</button>
+                    <button className="btn btn-success loginBtn">Sign Up</button>
                 </div>
             </form>
             {confirmReg ? <p>{confirmReg}</p>: null}

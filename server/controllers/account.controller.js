@@ -20,6 +20,12 @@ module.exports = {
       })
   },
 
+  updateAccount: (req, res)=> {
+    Account.findOneAndUpdate({firstName: req.params.firstName}, req.body, {new:true, runValidators: true})
+    .then(updatedAccount => res.json(updatedAccount))
+    .catch(err => res.status(400).json({err}))
+  },
+
   login: (req, res)=> {
     Account.findOne({email: req.body.email})
       .then((accountRecord)=>{

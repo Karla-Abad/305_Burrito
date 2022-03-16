@@ -33,19 +33,24 @@ const LoginForm = (props)=> {
 
     return(
         <div>
-            <div>
-                <h1>305 BURRITO</h1>
+            <div className='flex'>
+                <h1 className='title'>305 BURRITO</h1>
                 <Link to="/accounts/register">Don't Have an Account? Register</Link>
             </div>
             <h2>Welcome Back!</h2>
             <div>
                 <form onSubmit={handleSubmit}>
-                    <label>Email:</label>
-                    <input type="text" value={email} onChange={(e)=> setEmail(e.target.value)} />
-                    <label>Password:</label>
-                    <input type="password" value={password} onChange={(e)=> setPassword(e.target.value)} />
+                    <div >
+                        <label className='form-label'>Email:</label>
+                        <input className='form-control' type="text" value={email} onChange={(e)=> setEmail(e.target.value)} />
+                    </div>
                     <div>
-                        <button type='submit'>Log In</button>
+                    <label className='form-label'>Password:</label>
+                    <input className='form-control' type="password" value={password} onChange={(e)=> setPassword(e.target.value)} />
+                    </div>
+                    {errorMessage && <p>{errorMessage}</p>}
+                    <div>
+                        <button type='submit' className='btn btn-info loginBtn'>Log In</button>
                     </div>
                 </form>
             </div>

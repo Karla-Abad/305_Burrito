@@ -1,55 +1,101 @@
 import Nav from "./Nav";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import OrderList from "./OrderList";
+
+
 
 const UpdateAccount = (props) => {
-    const [account, setAccount]= useState();
-    const [loaded, setLoaded]= useState(false);
-    const {firstName}= props;
-    const [accountOrderList, setAccountOrderList]= useState([])
+    const [account, setAccount]= useState({});
+    const [loadedAccount, setLoadedAccount]= useState(false);
+    const [accountOrderList, setAccountOrderList]= useState([]);
+    const [errors, setErrors]= useState({});
+    const [loadedOrders, setLoadedOrders]= useState(false);
 
     useEffect(()=> {
-        axios.get("http//localhost:8000/api/accounts/secure", 
+        axios
+        .get("http://localhost:8000/api/accounts/secure", 
         {withCredentials:true}
         )
         .then((res) => {
             console.log(res.data);
             setAccount(res.data);
+            setLoadedAccount(true);
         })
         .catch((err)=> {
             console.log(err);
         })
     },[])
 
-    useEffect(()=> {
+    const handleInputChange = (e)=>{
+        console.log("name: "+ e.target.name);
+        console.log("value: "+ e.target.value);
+        let tempAccount = {...account};
+        tempAccount[e.target.name]= e.target.value
+        setAccount(tempAccount)
+    }
+
+    const updateAccount = (e)=> {
+        e.preventDefault();
         axios
-            .get("http://localhost:8000/api/orders/"+firstName, 
+        .put("http://localhost:8000/api/accounts/"+account.firstName, {
+            firstName: account.firstName,
+            lastName: account.lastName,
+            address: account.address,
+            city: account.city,
+            state: account.state
+        })
+        .then((res)=> {
+            console.log(res);
+            console.log(res.data);
+        })
+        .catch(err => {
+            console.log(err.response.data.err.errors);
+            setErrors(err.response.data.err.errors);
+          })
+
+    }
+
+    useEffect(()=> {
+        console.log("account:");
+        console.log(account);
+        if(account.firstName === undefined){
+            return;
+        }
+        axios
+            .get("http://localhost:8000/api/orders/"+account.firstName, 
             {withCredentials:true}
             )
             .then(res => {
                 console.log(res.data);
                 setAccountOrderList(res.data);
+                setLoadedOrders(true);
             })
             .catch(err => console.log(err))
-    },[])
+    },[loadedAccount])
 
     return(
         <div>
             <Nav/>
-            <h2>Account Info</h2>
-            {loaded && (
-            <div>
-                <form>
-                    <label>First Name:</label>
-                    <input type="text" value={account.firstName}/>
+            <div className="flex">
+            {loadedAccount && (
+            <div className="updateAccountDiv">
+                <h2>Account Details</h2>
+                <form onSubmit={updateAccount}>
+                    <label >First Name:</label>
+                    <input className='form-control' type="text" name="firstName" value={account.firstName} onChange={(e)=> handleInputChange(e)} />  
+                    {errors.firstName && <p>{errors.firstName.message}</p>}
                     <label>Last Name:</label>
-                    <input type="text" value={account.lastName} />
+                    <input className='form-control' type="text" name="lastName" value={account.lastName} onChange={(e)=> handleInputChange(e)} />
+                    {errors.lastName && <p>{errors.lastName.message}</p>}
                     <label>Address:</label>
-                    <input type="text" value={account.address} />
+                    <input className='form-control' type="text" name="address" value={account.address} onChange={(e)=> handleInputChange(e)} />
+                    {errors.address && <p>{errors.address.message}</p>}
                     <label>City:</label>
-                    <input type="text" value={account.city} />
+                    <input className='form-control' type="text" name="city" value={account.city} onChange={(e)=> handleInputChange(e)} />
+                    {errors.city && <p>{errors.city.message}</p>}
                     <label>State:</label>
-                    <select value={account.state}>
+                    <select className="form-select form-select-sm" name="state" value={account.state} onChange={(e)=> handleInputChange(e)}>
                         <option>Select a state</option>
                         <option>FL</option>
                         <option>NY</option>
@@ -57,24 +103,42 @@ const UpdateAccount = (props) => {
                         <option>CA</option>
                         <option>TX</option>
                     </select>
-                    <div>
-                        <button>UPDATE</button>
+                    <div className="updateBtn">
+                        <button className="btn btn-info loginBtn">UPDATE</button>
                     </div>
                 </form>
             </div>
             )}
-            <div>
-                <h2>Past Orders</h2>
+            <div className="updateAccountDiv">
+                
+                {loadedOrders && (
                 <div>
+                    <h2>Past Orders</h2>
                     {
-                        accountOrderList.map((order, index)=> (
+                        accountOrderList.map((orderList, index)=> (
                             <div key={index}>
-                                <p>{order.burritoType} - {order.toppingOne}, {order.toppingTwo}, {order.toppingThree}, {order.toppingFour}, {order.toppingFive}, {order.toppingSix}, {order.toppingSeven}, {order.toppingEight}, {order.toppingNine}</p>
+                                
+                                <span>{orderList.burritoType}-</span>
+                                {orderList.steak===true &&<span>Steak, </span>}  
+                                {orderList.chicken===true &&<span>Chicken, </span>}  
+                                {orderList.whiteRice===true &&<span>White Rice, </span>} 
+                                {orderList.brownRice===true &&<span>Brown Rice, </span>}
+                                {orderList.blackBeans===true &&<span>Black Beans, </span>} 
+                                {orderList.pintoBeans===true &&<span>Pinto Beans, </span>} 
+                                {orderList.lettuce===true &&<span>Lettuce, </span>} 
+                                {orderList.corn===true &&<span>Corn, </span>} 
+                                {orderList.cheese===true &&<span>Cheese, </span>}
+                                {orderList.picoDeGallo===true &&<span>Pico de Gallo, </span>}
+                                {orderList.onions===true &&<span>Onions, </span>}
+                                {orderList.guacamole===true &&<span>Guacamole, </span>}
+                                <input type="checkbox"/>Favorite   
                                 <hr/>
                             </div>
                         ))
                     }
                 </div>
+                )}
+            </div>
             </div>
         </div>
     )

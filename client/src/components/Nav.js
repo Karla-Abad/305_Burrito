@@ -20,13 +20,13 @@ const logout =(e)=> {
 }
     
     return(
-        <div>
-            <h1>305 BURRITO</h1>
-            <div>
-                <span><Link to="/home">HOME</Link></span>
-                <span><Link to="/build_burrito">ORDER (0)</Link></span>
-                <span><Link to="/orders/:firstName">ACCOUNT</Link></span>
-                <button onClick={logout}>LOGOUT</button>
+        <div className="flex" >
+            <h1 className="title">305 BURRITO</h1>
+            <div role="navigation" className="nav justify-content-end">
+                <span className="nav-link"><Link to="/home">HOME</Link></span>
+                <span className="nav-link"><Link to="/build_burrito">ORDER (0)</Link></span>
+                <span className="nav-link"><Link to="/orders/:firstName">ACCOUNT</Link></span>
+                <button className="btn btn-light" onClick={logout}>LOGOUT</button>
                 {/* <span><Link to="/login">LOGOUT</Link></span> */}
             </div>
         </div>

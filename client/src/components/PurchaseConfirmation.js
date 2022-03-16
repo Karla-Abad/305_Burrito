@@ -11,7 +11,7 @@ const PurchaseConfirmation = () => {
             <h2>Thank you for purchasing from 305 Burrito!</h2>
             <h3>Confirmation # {confirmationNumber(1000000)}</h3>
             <div>
-                <button onClick={(e)=>navigate("/home")}>Home</button>
+                <button className='btn btn-info loginBtn' onClick={(e)=>navigate("/home")}>Home</button>
             </div>
         </div>
     )

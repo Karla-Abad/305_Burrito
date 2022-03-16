@@ -7,4 +7,5 @@ module.exports = (app) => {
     app.post("/api/accounts/login", AccountController.login);
     app.post("/api/accounts/logout", AccountController.logout);
     app.get("/api/accounts/secure", authenticate, AccountController.getLoggedInAccount);
+    app.put("/api/accounts/:firstName", AccountController.updateAccount);
 };
