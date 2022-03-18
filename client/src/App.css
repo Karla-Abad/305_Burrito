@@ -92,6 +92,11 @@ label {
   text-align: right;
 }
 
+.regMessage {
+  text-align: center;
+  font-size: larger;
+}
+
 .flexLabelLogin {
   flex: 1;
   margin-left: 0;

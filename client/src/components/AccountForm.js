@@ -107,7 +107,7 @@ const AccountForm = (props) => {
                     <label className='form-label flexSignUpLabel'>Confirm Password:</label>
                     <input className='form-control flexSignUpInput' type="password" value={confirmPassword} onChange={(e)=> setConfirmPassword(e.target.value)} />
                 </div>
-                {confirmReg ? <p>{confirmReg}</p>: null}
+                {confirmReg ? <p className="regMessage">{confirmReg}</p>: null}
                 {errors.confirmPassword && <p className="validations">{errors.confirmPassword.message}</p>}
                 </div>
                 <div>

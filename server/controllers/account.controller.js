@@ -63,7 +63,7 @@ module.exports = {
                 });
               } else {
                 res.status(400).json({
-                  message: "Email and/or password invalid"
+                  message: "Invalid email and/or password."
                 })
               }
        

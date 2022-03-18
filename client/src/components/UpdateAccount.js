@@ -85,23 +85,23 @@ const UpdateAccount = (props) => {
                     <div className="flex accountDetails">
                         <label className="flexLabel" >First Name:</label>
                         <input className='form-control flexInput' type="text" name="firstName" value={account.firstName} onChange={(e)=> handleInputChange(e)} />  
-                        {errors.firstName && <p className="validations">{errors.firstName.message}</p>}
                     </div>
+                    {errors.firstName && <p className="validations">{errors.firstName.message}</p>}
                     <div className="flex accountDetails">
                         <label className="flexLabel">Last Name:</label>
                         <input className='form-control flexInput' type="text" name="lastName" value={account.lastName} onChange={(e)=> handleInputChange(e)} />
-                        {errors.lastName && <p className="validations">{errors.lastName.message}</p>}
                     </div>
+                    {errors.lastName && <p className="validations">{errors.lastName.message}</p>}
                     <div className="flex accountDetails">
                         <label className="flexLabel">Address:</label>
                         <input className='form-control flexInput' type="text" name="address" value={account.address} onChange={(e)=> handleInputChange(e)} />
-                        {errors.address && <p className="validations">{errors.address.message}</p>}
                     </div>
+                    {errors.address && <p className="validations">{errors.address.message}</p>}
                     <div className="flex accountDetails">
                         <label className="flexLabel">City:</label>
                         <input className='form-control flexInput' type="text" name="city" value={account.city} onChange={(e)=> handleInputChange(e)} />
-                        {errors.city && <p className="validations">{errors.city.message}</p>}
                     </div>
+                    {errors.city && <p className="validations">{errors.city.message}</p>}
                     <div className="flex accountDetails">
                         <label className="flexLabel">State:</label>
                         <select className="form-select form-select-sm flexInput" name="state" value={account.state} onChange={(e)=> handleInputChange(e)}>
