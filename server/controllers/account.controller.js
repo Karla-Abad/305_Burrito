@@ -21,7 +21,7 @@ module.exports = {
   },
 
   updateAccount: (req, res)=> {
-    Account.findOneAndUpdate({firstName: req.params.firstName}, req.body, {new:true, runValidators: true})
+    Account.findOneAndUpdate({_id: req.params.id}, req.body, {new:true, runValidators: true})
     .then(updatedAccount => res.json(updatedAccount))
     .catch(err => res.status(400).json({err}))
   },

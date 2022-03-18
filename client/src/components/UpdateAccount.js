@@ -38,7 +38,7 @@ const UpdateAccount = (props) => {
     const updateAccount = (e)=> {
         e.preventDefault();
         axios
-        .put("http://localhost:8000/api/accounts/"+account.firstName, {
+        .put("http://localhost:8000/api/accounts/"+account._id, {
             firstName: account.firstName,
             lastName: account.lastName,
             address: account.address,
@@ -63,7 +63,7 @@ const UpdateAccount = (props) => {
             return;
         }
         axios
-            .get("http://localhost:8000/api/orders/"+account.firstName, 
+            .get("http://localhost:8000/api/orders/"+account._id, 
             {withCredentials:true}
             )
             .then(res => {
@@ -82,27 +82,37 @@ const UpdateAccount = (props) => {
             <div className="updateAccountDiv">
                 <h2>Account Details</h2>
                 <form onSubmit={updateAccount}>
-                    <label >First Name:</label>
-                    <input className='form-control' type="text" name="firstName" value={account.firstName} onChange={(e)=> handleInputChange(e)} />  
-                    {errors.firstName && <p>{errors.firstName.message}</p>}
-                    <label>Last Name:</label>
-                    <input className='form-control' type="text" name="lastName" value={account.lastName} onChange={(e)=> handleInputChange(e)} />
-                    {errors.lastName && <p>{errors.lastName.message}</p>}
-                    <label>Address:</label>
-                    <input className='form-control' type="text" name="address" value={account.address} onChange={(e)=> handleInputChange(e)} />
-                    {errors.address && <p>{errors.address.message}</p>}
-                    <label>City:</label>
-                    <input className='form-control' type="text" name="city" value={account.city} onChange={(e)=> handleInputChange(e)} />
-                    {errors.city && <p>{errors.city.message}</p>}
-                    <label>State:</label>
-                    <select className="form-select form-select-sm" name="state" value={account.state} onChange={(e)=> handleInputChange(e)}>
-                        <option>Select a state</option>
-                        <option>FL</option>
-                        <option>NY</option>
-                        <option>AL</option>
-                        <option>CA</option>
-                        <option>TX</option>
-                    </select>
+                    <div className="flex accountDetails">
+                        <label className="flexLabel" >First Name:</label>
+                        <input className='form-control flexInput' type="text" name="firstName" value={account.firstName} onChange={(e)=> handleInputChange(e)} />  
+                        {errors.firstName && <p className="validations">{errors.firstName.message}</p>}
+                    </div>
+                    <div className="flex accountDetails">
+                        <label className="flexLabel">Last Name:</label>
+                        <input className='form-control flexInput' type="text" name="lastName" value={account.lastName} onChange={(e)=> handleInputChange(e)} />
+                        {errors.lastName && <p className="validations">{errors.lastName.message}</p>}
+                    </div>
+                    <div className="flex accountDetails">
+                        <label className="flexLabel">Address:</label>
+                        <input className='form-control flexInput' type="text" name="address" value={account.address} onChange={(e)=> handleInputChange(e)} />
+                        {errors.address && <p className="validations">{errors.address.message}</p>}
+                    </div>
+                    <div className="flex accountDetails">
+                        <label className="flexLabel">City:</label>
+                        <input className='form-control flexInput' type="text" name="city" value={account.city} onChange={(e)=> handleInputChange(e)} />
+                        {errors.city && <p className="validations">{errors.city.message}</p>}
+                    </div>
+                    <div className="flex accountDetails">
+                        <label className="flexLabel">State:</label>
+                        <select className="form-select form-select-sm flexInput" name="state" value={account.state} onChange={(e)=> handleInputChange(e)}>
+                            <option>Select a state</option>
+                            <option>FL</option>
+                            <option>NY</option>
+                            <option>AL</option>
+                            <option>CA</option>
+                            <option>TX</option>
+                        </select>
+                    </div>
                     <div className="updateBtn">
                         <button className="btn btn-info loginBtn">UPDATE</button>
                     </div>
@@ -117,8 +127,8 @@ const UpdateAccount = (props) => {
                     {
                         accountOrderList.map((orderList, index)=> (
                             <div key={index}>
-                                
-                                <span>{orderList.burritoType}-</span>
+                                <p><input className="form-check-input" type="checkbox"/> Favorite</p>   
+                                <span>{orderList.burritoType}- </span>
                                 {orderList.steak===true &&<span>Steak, </span>}  
                                 {orderList.chicken===true &&<span>Chicken, </span>}  
                                 {orderList.whiteRice===true &&<span>White Rice, </span>} 
@@ -131,7 +141,6 @@ const UpdateAccount = (props) => {
                                 {orderList.picoDeGallo===true &&<span>Pico de Gallo, </span>}
                                 {orderList.onions===true &&<span>Onions, </span>}
                                 {orderList.guacamole===true &&<span>Guacamole, </span>}
-                                <input type="checkbox"/>Favorite   
                                 <hr/>
                             </div>
                         ))

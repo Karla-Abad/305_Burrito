@@ -50,8 +50,8 @@ module.exports.findAllOrders = (req, res) => {
   }
 
   module.exports.findAllOrdersBy = (req, res)=> {
-    if(req.jwtpayload.firstName !== req.params.firstName){
-      Account.findOne({firstName: req.params.firstName})
+    if(req.jwtpayload.id !== req.params.id){
+      Account.findOne({_id: req.params.id})
         .then((accountNotLoggedIn)=>{
           Order.find({createdBy: accountNotLoggedIn._id})
             .populate("createdBy", "firstName")

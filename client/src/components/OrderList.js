@@ -46,9 +46,9 @@ const OrderList =(props)=> {
             <h2 className="orderDetails">YOUR ORDER</h2>
             <div className="orderDetails">
                 <p>METHOD: {order.method}</p>
-                <p>Burrito Type: {order.burritoType}</p>
-                <p>Qty: {order.qty}</p>
-                <span>Toppings: </span>
+                <p>BURRITO TYPE: {order.burritoType}</p>
+                <p>QTY: {order.qty}</p>
+                <span>TOPPINGS: </span>
                 {order.steak===true &&<span>Steak, </span>}  
                 {order.chicken===true &&<span>Chicken, </span>}  
                 {order.whiteRice===true &&<span>White Rice, </span>} 
@@ -62,12 +62,24 @@ const OrderList =(props)=> {
                 {order.onions===true &&<span>Onions, </span>}
                 {order.guacamole===true &&<span>Guacamole, </span>}  
             </div>
-            <div className="orderTotals">         
-                <p>PRICE:${price}</p>
-                <p>DELIVERY FEE:$ {deliveryFee}</p>
-                <p>TAX:${taxFee}</p>
+            <div className="orderTotals">
+                <div className="paddingTotals">         
+                    <p>PRICE:</p>
+                    <p>${price}</p>
+                </div>
+                <div className="paddingTotals">
+                    <p>DELIVERY FEE:</p>
+                    <p>${deliveryFee}.00</p>
+                </div>
+                <div className="paddingTotals">
+                    <p>TAX:</p>
+                    <p>${taxFee}</p>
+                </div>
                 <hr/>
-                <p>TOTAL:${total}</p>
+                <div className="total paddingTotals">
+                    <p>TOTAL:</p>
+                    <p>${total}</p>
+                </div>
             </div> 
             <div>
                 <button className="btn btn-dark loginBtn" onClick={(e)=> {handleDelete(order._id)}}>START OVER</button>

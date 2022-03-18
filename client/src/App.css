@@ -14,6 +14,7 @@ button {
 
 h2 {
   font-weight: bolder;
+  margin-bottom: 15px;
 }
 
 .orderDetails {
@@ -38,11 +39,86 @@ label {
   padding: 5px 5px;
 }
 
+.marginBottom {
+  margin-bottom: 30px;
+}
+
+.total{
+  background-color: white;
+  padding-top: 20px;
+  font-size: larger;
+}
+
+.paddingTotals {
+  padding-left: 10px;
+  padding-right: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.loginHeader{
+  align-items: baseline;
+  margin-bottom: 30px;
+}
+.accountDetails {
+  margin-bottom: 15px;
+}
+
+.flexLabel {
+  flex: 1;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.flexInput {
+  flex: 5;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.flexSignUpLabel {
+  flex: 2;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.flexSignUpInput {
+  flex: 5;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.validations{
+  text-align: right;
+}
+
+.flexLabelLogin {
+  flex: 1;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.flexInputLogin {
+  flex: 3;
+}
+
+.signUpDiv{
+  margin: 20px auto;
+  text-align: left;
+  padding: 0px 10px;
+  width: 700px;
+}
 .selectDiv {
   display: flex;
   padding: 10px;
   text-align: left;
+  width: 600px;
+  margin: auto;
 } 
+
+.center {
+  text-align: center;
+}
 
 .flex {
   display: flex;
@@ -75,5 +151,21 @@ label {
   padding-left: 25px;
   padding-right: 25px;
   margin-top: 25px;
-  width: 350px;
+  width: 404px;
 }
+
+.signUpBtn {
+  padding-left: 25px;
+  padding-right: 25px;
+  margin-top: 25px;
+  width: 600px;
+}
+
+.loginDiv {
+  width: 404px;
+  margin-bottom: 20px;
+  text-align: left;
+  margin: 20px auto;
+}
+
+

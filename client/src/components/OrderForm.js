@@ -28,7 +28,7 @@ const OrderForm = (props) => {
 
     
     return (
-        <div>
+        <div >
             <Nav/>
             <h2>BUILD YOUR BURRITO</h2>
             <div>
@@ -42,12 +42,12 @@ const OrderForm = (props) => {
                     </div>
                     <div className="selectDiv">
                         <label>BURRITO TYPE:</label>
-                        <select className="form-select form-select-sm"  name="burritoType" value={order.burritoType} onChange={(e)=> handleInputChange(e)}>
+                        <select className="form-select form-select-lg mb-3"  name="burritoType" value={order.burritoType} onChange={(e)=> handleInputChange(e)}>
                             <option>Bowl</option>
                             <option>Burrito</option>
                         </select>
                         <label>QTY:</label>
-                        <select className="form-select form-select-sm" name="qty" value={order.qty} onChange={(e)=> handleInputChange(e)}>
+                        <select className="form-select form-select-lg mb-3" name="qty" value={order.qty} onChange={(e)=> handleInputChange(e)}>
                             <option>1</option>
                             <option>2</option>
                             <option>3</option>

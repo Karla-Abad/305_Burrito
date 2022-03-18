@@ -36,14 +36,13 @@ const App=() => {
 }
 
 
-
   return (
     <div className="App">
      <Router>
        <AccountForm path="/accounts/register" default/>
        <Home path="/home" />
        <LoginForm path="/login" />
-       <UpdateAccount path="/orders/:firstName" />
+       <UpdateAccount path="/orders/:id" />
        <New path="/build_burrito"/>
        <Fav path="/build_fav"/>
        <Surprise path="/build_surprise" />
