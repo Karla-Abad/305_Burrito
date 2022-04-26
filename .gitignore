@@ -9,6 +9,9 @@ node_modules
 bower_components
 .env
 
+coverage/
+build/
+
 *.sublime*
 
 psd
