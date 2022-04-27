@@ -19,4 +19,4 @@ app.use(cookieParser());
 require("./config/mongoose.config")
 require("./routes/account.routes")(app);
 require("./routes/order.routes")(app);
-app.listen(process.env.MY_PORT, ()=> {console.log(`Express server running on port ${process.env.MY_PORT}`)});
+app.listen(port, ()=> {console.log(`Express server running on port ${port}`)});
