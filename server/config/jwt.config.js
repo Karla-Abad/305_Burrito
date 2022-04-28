@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 module.exports = {
     authenticate(req, res, next){
         jwt.verify(req.cookies.accounttoken, 
-            process.env.JWT_SECRET,
+            "avna11kvab02sng04",
             (err, payload) => {
                 if(err){
                     console.log(err);
