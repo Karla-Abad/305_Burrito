@@ -9,8 +9,6 @@ const Surprise = ({ randomOrder }) => {
   const [errors, setErrors] = useState({});
   const [order, setOrder] = useState({});
 
-  console.log(randomOrder._id);
-
   useEffect(() => {
     axios
       .get(`http://localhost:8000/api/your_order/${randomOrder._id}`)

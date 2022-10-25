@@ -1,32 +1,101 @@
+:root {
+  --color-primary: rgb(87, 221, 46);
+  --color-secondary: #31c48d;
+  --color-terciary: #2d9b0a;
+  --color-background: #c9efc7;
+  --color-accent--blue: rgb(67, 222, 250);
+  --color-accent--blue-hover: rgb(132, 231, 248);
+  --color-accent--green: #028a02;
+  --color-accent--green-hover: #51b004;
+  --color-accent--red: #e20d0d;
+  --color-accent--red-hover: #f14545;
+  --color-body: #fff;
+  --color-headings: #fff;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url("./images/Two.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+
 .App {
+  background-color: var(--color-primary);
+  border-radius: 20px;
+  color: white;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  margin-top: 45px;
+  padding: 30px 50px;
   text-align: center;
-  padding: 30px;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
-.title {
-  font-family:fantasy;
+.logo {
+  width: 100px;
 }
 
-button {
-  margin: 10px 20px;
-} 
-
-h2 {
+h1 {
   font-weight: bolder;
-  margin-bottom: 15px;
+}
+
+.register__link {
+  color: white;
+  font-size: large;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.register__link:hover {
+  text-decoration: underline;
+}
+
+.error {
+  background: rgb(248, 211, 211);
+  border: 2px solid red;
+  border-radius: 5px;
+  color: red;
+  font-size: 1rem;
+  margin-top: 5px;
+}
+
+.success {
+  background: rgb(186, 243, 177);
+  border: 2px solid var(--color-accent--green-hover);
+  border-radius: 5px;
+  color: var(--color-accent--green);
+  font-size: 1rem;
+  margin: 10px 0;
+}
+
+.message {
+  background: white;
+  border-radius: 5px;
+  color: var(--color-secondary);
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0 0 30px;
+  padding: 10px;
 }
 
 .orderDetails {
   text-align: left;
-  padding: 15px
+  padding: 15px;
 }
 
 .orderTotals {
   text-align: right;
   font-weight: bolder;
   padding: 15px;
-  background-color:lightblue;
+  background-color: lightblue;
 }
 
 .updateBtn {
@@ -43,7 +112,7 @@ label {
   margin-bottom: 30px;
 }
 
-.total{
+.total {
   background-color: white;
   padding-top: 20px;
   font-size: larger;
@@ -56,10 +125,6 @@ label {
   justify-content: space-between;
 }
 
-.loginHeader{
-  align-items: baseline;
-  margin-bottom: 30px;
-}
 .accountDetails {
   margin-bottom: 15px;
 }
@@ -76,50 +141,11 @@ label {
   padding-left: 0;
 }
 
-.flexSignUpLabel {
-  flex: 2;
-  margin-left: 0;
-  padding-left: 0;
-}
-
-.flexSignUpInput {
-  flex: 5;
-  margin-left: 0;
-  padding-left: 0;
-}
-
-.validations{
-  text-align: right;
-}
-
-.regMessage {
-  text-align: center;
-  font-size: larger;
-}
-
 .flexLabelLogin {
   flex: 1;
   margin-left: 0;
   padding-left: 0;
 }
-
-.flexInputLogin {
-  flex: 3;
-}
-
-.signUpDiv{
-  margin: 20px auto;
-  text-align: left;
-  padding: 0px 10px;
-  width: 700px;
-}
-.selectDiv {
-  display: flex;
-  padding: 10px;
-  text-align: left;
-  width: 600px;
-  margin: auto;
-} 
 
 .center {
   text-align: center;
@@ -130,40 +156,38 @@ label {
   justify-content: space-between;
 }
 
-.textAlign {
-  text-align: left;
-  padding: 10px;
-}
-
-.justifyContent{
-  justify-content: center;
-}
-
-.updateAccountDiv{
-  flex:1;
+.updateAccountDiv {
+  flex: 1;
   padding: 20px;
   text-align: left;
 }
 
-.quickOptions{
+.quickOptions {
   border: 2px solid lightgray;
   padding: 15px;
   margin: 10px;
-  flex:1;
+  flex: 1;
 }
 
-.loginBtn{
-  padding-left: 25px;
-  padding-right: 25px;
-  margin-top: 25px;
-  width: 404px;
+.form-control {
+  border: none;
+  outline: none;
+  margin-top: 10px;
 }
 
 .signUpBtn {
-  padding-left: 25px;
-  padding-right: 25px;
-  margin-top: 25px;
-  width: 600px;
+  background: var(--color-accent--blue);
+  border: none;
+  color: #fff;
+  font-size: larger;
+  font-weight: 600;
+  margin-top: 15px;
+  width: 100%;
+}
+
+.signUpBtn:hover {
+  color: #fff;
+  background: var(--color-accent--blue-hover);
 }
 
 .loginDiv {
@@ -172,5 +196,3 @@ label {
   text-align: left;
   margin: 20px auto;
 }
-
-

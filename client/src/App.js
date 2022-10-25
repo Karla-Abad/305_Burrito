@@ -18,7 +18,6 @@ const App = () => {
   const [errors, setErrors] = useState({});
 
   const [allOrders, setAllOrders] = useState([]);
-  // const [randomOrder, setRandomOrder] = useState({});
 
   useEffect(() => {
     axios
@@ -31,9 +30,6 @@ const App = () => {
   }, []);
 
   const randomIndex = Math.floor(Math.random() * 38);
-  console.log(allOrders[randomIndex]);
-  // const randomOrder = allOrders[randomIndex]._id;
-  // console.log(randomOrder);
 
   const removeFromDom = (orderId) => {
     setOrders(orders.filter((order) => order._id !== orderId));
