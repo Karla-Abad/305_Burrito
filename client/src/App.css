@@ -20,23 +20,44 @@
 }
 
 body {
-  background-image: url("./images/Two.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
   display: flex;
   justify-content: center;
   margin: auto;
 }
 
+nav {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px 0;
+}
+
 .App {
-  background-color: var(--color-primary);
-  border-radius: 20px;
   color: white;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  margin-top: 45px;
-  padding: 30px 50px;
+  height: 100vh;
+  width: 100vw;
   text-align: center;
+}
+
+.login,
+.register {
+  background-image: url("./images/Two.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  padding-top: 50px;
+}
+
+.login__form,
+.register__form {
+  background-color: var(--color-primary);
+  border-radius: 20px;
+  margin: auto;
+  padding: 30px;
+  width: fit-content;
 }
 
 .logo {
@@ -86,34 +107,134 @@ h1 {
   padding: 10px;
 }
 
-.orderDetails {
-  text-align: left;
-  padding: 15px;
-}
-
-.orderTotals {
-  text-align: right;
-  font-weight: bolder;
-  padding: 15px;
-  background-color: lightblue;
-}
-
 .updateBtn {
   text-align: center;
 }
 
-label {
-  margin-left: 5px;
-  margin-right: 5px;
-  padding: 5px 5px;
+/* Home */
+.btn-green {
+  align-self: center;
+  border: none;
+  color: var(--color-accent--green);
+  background: var(--color-background);
+  font-weight: bold;
+  height: fit-content;
+  margin-left: 10px;
+  padding: 10px 25px;
 }
 
-.marginBottom {
-  margin-bottom: 30px;
+.btn-green:hover {
+  color: var(--color-headings);
+  background: var(--color-secondary);
+}
+
+.home,
+.orderForm {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.home__heading,
+.orderForm__heading {
+  color: var(--color-accent--green);
+  font-weight: bold;
+  margin: 30px 0;
+}
+
+.home__options {
+  border: 3px solid var(--color-accent--green-hover);
+  border-radius: 10px;
+  margin: 10px;
+  flex: 1;
+}
+
+.home__description {
+  color: var(--color-accent--green);
+  font-size: large;
+  font-weight: 500;
+  padding: 10px;
+}
+
+.home__image {
+  width: 100%;
+}
+
+.home__btn {
+  margin: 0 0 10px;
+}
+
+/* OrderForm */
+
+.orderForm__label {
+  align-self: center;
+  color: var(--color-headings);
+  font-weight: 500;
+}
+
+.orderForm__form {
+  background-color: var(--color-primary);
+  box-shadow: 5px 5px 10px #888;
+  border-radius: 20px;
+  margin: auto;
+  padding: 50px;
+  max-width: 500px;
+}
+
+.orderForm__checkbox {
+  text-align: left;
+}
+
+.orderForm__toppings {
+  display: flex;
+  margin-bottom: 20px;
+  justify-content: space-evenly;
+}
+
+.selectDiv {
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+.form-check-input {
+  margin-right: 5px;
+}
+
+/* OrderList */
+
+.orderList {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.orderList__content {
+  width: fit-content;
+  margin: auto;
+}
+
+.orderList__description {
+  background: var(--color-background);
+  border-radius: 5px;
+  color: var(--color-accent--green);
+  font-weight: 500;
+  margin: auto;
+  text-align: left;
+  width: fit-content;
+  padding: 20px;
+}
+
+.orderTotals {
+  background-color: var(--color-primary);
+  border-radius: 5px;
+  font-weight: bolder;
+  margin: 10px auto;
+  padding: 15px;
+  text-align: right;
 }
 
 .total {
   background-color: white;
+  border-radius: 5px;
+  color: var(--color-accent--green);
   padding-top: 20px;
   font-size: larger;
 }
@@ -125,30 +246,56 @@ label {
   justify-content: space-between;
 }
 
-.accountDetails {
-  margin-bottom: 15px;
+.btn-red {
+  align-self: center;
+  border: none;
+  color: var(--color-headings);
+  background: var(--color-accent--red-hover);
+  font-weight: bold;
+  height: fit-content;
+  margin-left: 10px;
+  padding: 10px 25px;
 }
 
-.flexLabel {
-  flex: 1;
-  margin-left: 0;
-  padding-left: 0;
+.btn-red:hover {
+  color: var(--color-headings);
+  background: var(--color-accent--red);
 }
 
-.flexInput {
-  flex: 5;
-  margin-left: 0;
-  padding-left: 0;
+/* OrderConfirmation */
+
+.orderConfirmation__content {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 20px;
 }
 
-.flexLabelLogin {
-  flex: 1;
-  margin-left: 0;
-  padding-left: 0;
+/* UpdateAccount */
+.updateAccount {
+  max-width: 1200px;
+  margin: auto;
 }
 
-.center {
-  text-align: center;
+.updateAccount__content {
+  color: var(--color-accent--green);
+  background: var(--color-background);
+  border-radius: 10px;
+  margin-top: 30px;
+}
+
+.updateAccount__button {
+  border: none;
+  color: var(--color-headings);
+  background: var(--color-accent--green);
+  font-weight: bold;
+  height: fit-content;
+  margin: 20px auto;
+  padding: 10px 25px;
+}
+
+.updateAccount__button:hover {
+  color: var(--color-headings);
+  background: var(--color-terciary);
 }
 
 .flex {
@@ -156,17 +303,39 @@ label {
   justify-content: space-between;
 }
 
-.updateAccountDiv {
+.updateAccount__content-left,
+.updateAccount__content-right {
   flex: 1;
-  padding: 20px;
+  padding: 20px 30px;
   text-align: left;
 }
 
-.quickOptions {
-  border: 2px solid lightgray;
-  padding: 15px;
-  margin: 10px;
+.updateAccount__content-right {
+  max-height: 700px;
+  overflow: auto;
+}
+
+.updateAccount__content-left {
+  border-right: 1px solid var(--color-accent--green);
+  text-align: center;
+}
+
+.updateAccount__heading {
+  text-align: left;
+}
+
+.accountDetails {
+  margin-bottom: 15px;
+}
+
+.accountDetails__label {
+  align-self: center;
   flex: 1;
+  text-align: left;
+}
+
+.accountDetails__input {
+  flex: 4;
 }
 
 .form-control {

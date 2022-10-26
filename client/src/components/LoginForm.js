@@ -33,40 +33,37 @@ const LoginForm = (props) => {
   };
 
   return (
-    <div>
-      <img className="logo" src={logoWhite} alt="Restaurant Logo" />
+    <div className="login">
+      <form className="login__form" onSubmit={handleSubmit}>
+        <img className="logo" src={logoWhite} alt="Restaurant Logo" />
+        <h1>Welcome Back!</h1>
+        <input
+          className="form-control"
+          placeholder="Email"
+          type="text"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
 
-      <h1>Welcome Back!</h1>
-      <div>
-        <form onSubmit={handleSubmit}>
-          <input
-            className="form-control"
-            placeholder="Email"
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+        <input
+          className="form-control"
+          placeholder="Password"
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
 
-          <input
-            className="form-control"
-            placeholder="Password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-
-          {errorMessage && <p className="error">{errorMessage}</p>}
-          <div>
-            <button type="submit" className="btn btn-info signUpBtn">
-              Log In
-            </button>
-          </div>
-        </form>
+        {errorMessage && <p className="error">{errorMessage}</p>}
+        <div>
+          <button type="submit" className="btn btn-info signUpBtn">
+            Log In
+          </button>
+        </div>
         <hr />
         <Link to="/accounts/register" className="register__link">
           Don't Have an Account? Register
         </Link>
-      </div>
+      </form>
     </div>
   );
 };

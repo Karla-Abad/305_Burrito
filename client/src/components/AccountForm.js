@@ -56,11 +56,10 @@ const AccountForm = (props) => {
   };
 
   return (
-    <div>
-      <img className="logo" src={logoWhite} alt="Restaurant Logo" />
-
-      <h1>Create Account</h1>
-      <form onSubmit={handleSubmit}>
+    <div className="register">
+      <form className="register__form" onSubmit={handleSubmit}>
+        <img className="logo" src={logoWhite} alt="Restaurant Logo" />
+        <h1>Create Account</h1>
         <input
           className="form-control"
           placeholder="First Name"
@@ -141,18 +140,16 @@ const AccountForm = (props) => {
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
-
         {confirmReg ? <p className="success">{confirmReg}</p> : null}
         {errors.confirmPassword && (
           <p className="error">{errors.confirmPassword.message}</p>
         )}
-
         <button className="btn btn-info signUpBtn">Register</button>
+        <hr />
+        <Link className="register__link" to="/login">
+          Already Have an Account? Login Here.
+        </Link>
       </form>
-      <hr />
-      <Link className="register__link" to="/login">
-        Already Have an Account? Login Here.
-      </Link>
     </div>
   );
 };
