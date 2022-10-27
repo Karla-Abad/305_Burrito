@@ -56,7 +56,7 @@ const App = () => {
         <LoginForm path="/login" />
         <UpdateAccount path="/orders/:id" />
         <New path="/build_burrito" />
-        <Fav path="/build_fav" />
+        <Fav path="/build_fav" favoriteOrder={allOrders[1]} />
         <Surprise path="/build_surprise" randomOrder={allOrders[randomIndex]} />
         <OrderList
           path="/your_order/:id"
