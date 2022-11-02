@@ -51,9 +51,9 @@ const App = () => {
   return (
     <div className="App">
       <Router>
-        <AccountForm path="/accounts/register" default />
+        <AccountForm path="/accounts/register" />
         <Home path="/home" />
-        <LoginForm path="/login" />
+        <LoginForm path="/login" default />
         <UpdateAccount path="/orders/:id" />
         <New path="/build_burrito" />
         <Fav path="/build_fav" favoriteOrder={allOrders[1]} />

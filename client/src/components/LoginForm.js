@@ -4,8 +4,8 @@ import logoWhite from "../images/305-burrito-white.png";
 import axios from "axios";
 
 const LoginForm = (props) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("anieto@gmail.com");
+  const [password, setPassword] = useState("123456789");
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = (e) => {
